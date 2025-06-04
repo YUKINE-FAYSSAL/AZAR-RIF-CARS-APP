@@ -1,0 +1,227 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #f8fafc;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.admin-sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar-header {
+  padding: 20px 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.sidebar-header h2 {
+  color: #00f2ff;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.admin-sidebar.collapsed .sidebar-header h2 {
+  opacity: 0;
+  width: 0;
+}
+
+.collapse-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.collapse-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #00f2ff;
+}
+
+.admin-sidebar nav ul {
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar nav ul li a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+}
+
+.admin-sidebar nav ul li a:hover {
+  background: rgba(0, 242, 255, 0.1);
+  color: #00f2ff;
+  border-left: 3px solid #00f2ff;
+}
+
+.admin-sidebar nav ul li a.active {
+  background: rgba(0, 242, 255, 0.15);
+  color: #00f2ff;
+  border-left: 3px solid #00f2ff;
+}
+
+.admin-sidebar nav ul li a svg {
+  font-size: 1.2rem;
+  min-width: 24px;
+  transition: transform 0.3s ease;
+}
+
+.admin-sidebar.collapsed nav ul li a {
+  justify-content: center;
+  padding: 14px 0;
+}
+
+.admin-sidebar.collapsed nav ul li a svg {
+  transform: scale(1.1);
+}
+
+.admin-sidebar nav ul li a span {
+  transition: opacity 0.3s ease;
+}
+
+.admin-sidebar.collapsed nav ul li a span {
+  opacity: 0;
+  width: 0;
+}
+
+.admin-sidebar nav ul li.back-to-site {
+  margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+  transition: margin-left 0.3s ease;
+  margin-left: 250px;
+}
+
+.admin-content.collapsed {
+  margin-left: 70px;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(52, 152, 219, 0.2);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .admin-sidebar {
+    width: 220px;
+  }
+  
+  .admin-sidebar.collapsed {
+    width: 60px;
+  }
+  
+  .admin-content {
+    margin-left: 220px;
+    padding: 25px;
+  }
+  
+  .admin-content.collapsed {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  .admin-sidebar:not(.collapsed) {
+    width: 250px;
+  }
+  
+  .admin-sidebar.collapsed {
+    width: 60px;
+  }
+  
+  .admin-content {
+    margin-left: 60px;
+    padding: 20px 15px;
+    padding-top: 20px;
+  }
+  
+  .admin-content.collapsed {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-sidebar:not(.collapsed) {
+    width: 220px;
+  }
+  
+  .admin-sidebar.collapsed {
+    width: 50px;
+  }
+  
+  .admin-content {
+    margin-left: 50px;
+  }
+  
+  .admin-sidebar nav ul li a {
+    padding: 12px 15px;
+  }
+  
+  .admin-sidebar.collapsed nav ul li a {
+    padding: 12px 0;
+  }
+}
